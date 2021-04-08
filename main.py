@@ -4,7 +4,7 @@ import  requests;
 import pymongo;
 Description=[];
 myclient=pymongo.MongoClient("mongodb://localhost:27017/");
-mydb=myclient["Findingjob"];
+mydb=myclient["FindingJob"];
 mycol=mydb["Job"]
 url='https://itviec.com/viec-lam-it';
 def getpagecontent(url):
@@ -13,11 +13,11 @@ def getpagecontent(url):
 soup=getpagecontent(url);
 divtags=soup.findAll("div",class_="job_content")
 for divtag in divtags:
-      NameJob=divtag.find("h2",class_="title").text;
-      city=divtag.find("div",class_="city").text;
-      NameJob.replace('\r\n', ' $ ');
-      city.replace("\n","");
-      Skills=[];
+      NameJob=divtag.find("h2",class_="title").text
+      city=divtag.find("div",class_="city").text.strip()
+      print(city)
+      NameJob.replace('\r\n', ' $ ')
+      Skills=[]
       Skill=divtag.find("div",class_="job-bottom").find("div",class_="tag-list").findAll("a",class_="mkt-track")
       for skills in Skill:
           Skills.append(skills.find("span").text.replace("\n",""))
@@ -31,11 +31,11 @@ for divtag in divtags:
                 Location=svgicon1.find("span").text;
       Location.replace("\n","");
       Time=divtagssoup1.find("div",class_="job-details__overview").find("div",class_="svg-icon--blue")
-      ReallyTime=Time.find("div",class_="svg-icon__text").text
-      ReallyTime.replace("\n","");
+      ReallyTime=Time.find("div",class_="svg-icon__text").text.strip()
+      print(ReallyTime)
       Jobdetails=divtagssoup1.findAll("div",class_="job-details__paragraph")
-      DescriptionJob=str(Jobdetails[0].find("p"))
-      RequirementJob=str(Jobdetails[1].find("p"))
+      DescriptionJob = str(Jobdetails[0].find("p"))
+      RequirementJob = str(Jobdetails[1].find("p"))
       mydick={"NameJob":NameJob,
             "JobDescription":DescriptionJob,
              "JobRequirements":RequirementJob,
