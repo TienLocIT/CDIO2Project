@@ -1,4 +1,4 @@
-import bs4
+from bs4 import BeautifulSoup
 import requests
 import pymongo
 MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
