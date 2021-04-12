@@ -11,7 +11,7 @@ url = 'https://itviec.com/viec-lam-it'
 
 def getpagecontent(url):
     page = requests.get(url, headers={"Accept-Language": "en-US"})
-    return bs4.BeautifulSoup(page.text, "html.parser")
+    return BeautifulSoup(page.text, "html.parser")
 
 
 soup = getpagecontent(url)
