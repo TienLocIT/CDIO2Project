@@ -1,0 +1,63 @@
+html
+    head 
+        link(rel='stylesheet' href='/styles/infor.css')
+    body
+        .container
+            .header
+                ul
+                    li
+                        a(href='/') HOME
+                    li
+                        a(href='') COMPANY
+                    li
+                        a(href='') JOB
+                    li
+                        a(href='') SERVICE
+                input#Headsearch(type='search' name='' placeholder="Search")
+            .content
+                .contentLeft
+                    form.fr(action='/information/'+user._id method='POST' enctype="multipart/form-data")
+                        h2 Personal Information
+                        .HeadofLeft
+                            label(for='txtFirstName' style='font-family:courier,arial,helvetica;') Fisrt Name:
+                            label(for='txtLastName' style='margin-left: 73px;') Last Name:
+                            br
+                            input#txtFirstName(type='text' name="firstName" value=valued ? valued.firstName: "")
+                            input#txtLastName(type='text' name="lastName" value=valued ? valued.lastName: "")
+                        p(style='font-family:courier,arial,helvetica;') Phone mumber
+                        input#phonenumber(type='tel' name="phone" value=valued ? valued.phone: "")
+                        br
+                        .gender
+                            p(style='font-family:courier,arial,helvetica;') Gender:
+                            input(type='radio' name='gender' id='' checked='' value=valued ? valued.gender: "")
+                            |  Male
+                            input(type='radio' name='gender' id='' value=valued ? valued.gender: "")
+                            |  Female
+                        .DateOfBirth
+                            p(style='font-family:courier,arial,helvetica;') Date of birth:
+                            input#dateofbirth(type='date' name='DateOfBirth' value=valued ? valued.DateOfBirth: "")
+                        .Address
+                            p(style='font-family:courier,arial,helvetica;') Address:
+                            input#address(type='text' name='Address' value=valued ? valued.Address: "")
+                        p(style='font-family:courier,arial,helvetica;') Skills:
+                        span(onclick='addnewRow(this)') Add skill
+                        br
+                        input#skill1(type='text' style='display:none')
+                        br
+                        input#skill2(type='text' style='display:none')
+                        br
+                        input#skill3(type='text' style='display:none')
+                        br
+                        input#skill4(type='text' style='display:none')
+                        br
+                        input#skill5(type='text' style='display:none')
+                        br
+                        input#skill6(type='text' style='display:none')
+                        br
+                        button#submit Submit
+                        input#cancel(type='button' onclick="location.href='https://www.google.com/'" value='Cancel')
+                .contentRight
+                    lottie-player#lottie-player(src='https://assets6.lottiefiles.com/packages/lf20_1Kdbpk.json' background='transparent' speed='1' loop='' autoplay='')
+        .footer
+        script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+        script(src='/js/infor.js')
