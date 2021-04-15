@@ -1,0 +1,79 @@
+*{margin: 0;padding: 0;}
+body{
+    height: auto;
+    width: 1600px;
+    overflow-x: hidden;
+}
+.menu{
+    position: relative;
+    background-image: linear-gradient(90deg, rgb(0, 185, 242) 48%, rgb(14, 124, 205) 95%, rgb(0, 185, 242) 100%); 
+    color: white;
+    font-size: 15px;
+    height: 60px;
+}
+i .fas{
+    cursor: pointer;
+}
+.imgCompanyTop{
+    width: 150px;
+    height: 150px;
+}
+.nav-link{
+    color: white;
+}
+.sign-in{
+    position: absolute;
+    right: 20%;
+}
+.dropdown-toggle{
+    background-image: linear-gradient(90deg, rgb(0, 185, 242) 48%, rgb(14, 124, 205) 95%, rgb(0, 185, 242) 100%); 
+    color: white;
+}
+.dropdown-menu{
+    left: -260%!important;
+}
+.searching{
+    width: 900px;
+    position: absolute;
+    z-index: 3;
+    top: 40%;
+    left: 25%;
+    font-size: 36px;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 1px 1px rgb(0 0 0 / 70%);
+    margin-left: 12px;
+}
+.search{
+    border: none;
+    box-shadow: none;
+    padding-left: 5px;
+    color: #555555;
+    width: 600px;   
+    max-width: 100%;
+}
+.find{
+    border: 20px solid rgba(0, 0, 0, 0.272);
+}
+.search-button{
+    width: 100px; 
+    height: 60px; 
+    background-color: #F7941D; 
+    font-size: 15px; 
+    color: white; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.apply{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.team-member{
+    width: 14rem;
+    height: 14rem;
+    border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}

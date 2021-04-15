@@ -20,9 +20,9 @@ def crawl_Check(nameJob, nameCompany):
 
 def getPageContent(URL):
     page = requests.get(URL, headers={"Accept-Language": "en-US"})
-    return bs4.BeautifulSoup(page.text, "html.parser")
+    return BeautifulSoup(page.text, "html.parser")
 
-
+    
 def crawl_ITWork():
     global Location
     soup = getPageContent(url)
@@ -121,4 +121,5 @@ def crawl_topDev():
             myCol.insert_one(myDick)
 crawl_topDev()
 crawl_ITWork()
+print("test")
 # myDb.Job.delete_many({})
