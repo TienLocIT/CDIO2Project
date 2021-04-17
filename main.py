@@ -22,7 +22,12 @@ def getPageContent(URL):
     page = requests.get(URL, headers={"Accept-Language": "en-US"})
     return BeautifulSoup(page.text, "html.parser")
 
-    
+def TestArray(arrays,value):
+    dem=0;
+    for array in arrays:
+        if(array==value):
+            dem+=1
+    return dem
 def crawl_ITWork():
     global Location
     soup = getPageContent(url)
@@ -56,15 +61,17 @@ def crawl_ITWork():
                   "JobRequirements": RequirementJob,
                   "Location": Location,
                   "Skills": Skills,
-                  "Time": ReallyTime,
-                  "City": city}
+                  "YearOfExperience":"",
+                  "JobType":""
+                  }
         if crawl_Check(NameJob, nameCompany) == 1:
             myCol.insert_one(myDick)
+        Skills.clear()
 
 
 def crawl_topDev():
     global JobDescription, YearOfExperience, JobType, JobRequirement, Location
-    Skills = []
+    
     soupTopDev = getPageContent(urlTopDev)
     linkWorkTopDev = soupTopDev.findAll("a", class_="job-title")
     for link in linkWorkTopDev:
@@ -75,24 +82,34 @@ def crawl_topDev():
         NameJob = soupDescription.find("div", class_="card").find("div", class_="logo-com").find("img")["alt"].strip()
         Jobs = soupDescription.find("div", class_="card").find("div", class_="wrap-cont-job").findAll("h2",
                                                                                                       class_="fz17")
+        
         for job in Jobs:
             if job.text == "Mô tả công việc":  # Nếu Thẻ <h2> có text là mô tả công việc
                 job = job.findNext()  # Tìm tiếp theo của <h2>Mô tả công việc</h2>
-                JobDescription = ""  # Mô tả công việc
-                while job.text != "Yêu cầu công việc":  # Nếu thẻ tiếp theo mà có text là yêu cầu công việc thì stop
-                    if job.findChild() is not None:  # Nếu thẻ mà có con ở trong ví dụ:UL-LI
-                        JobDescription += str(job).strip()
-                    job = job.findNext()
+                JobDescription = []
+                for i in job.findAll("li"):
+                    JobDescription.append(i.text.strip())
+                 # Mô tả công việc
+                # while job.text != "Yêu cầu công việc":  # Nếu thẻ tiếp theo mà có text là yêu cầu công việc thì stop
+                #     if job.findChild("") is not None:  # Nếu thẻ mà có con ở trong ví dụ:UL-LI
+                       
+                #         if(TestArray(JobDescription,job.text)==0):
+                #             JobDescription.append(job.text.strip())
+                #     job = job.findNext()
             if job.text == "Yêu cầu công việc":  # Code dưới này cũng y chang như đoạn trên
-                JobRequirement = ""
+                JobRequirement = []
                 job = job.findNext()
-                while job.name != "div":
-                    if job.findChild() is not None:
-                        JobRequirement += str(job).strip()
-                    job = job.findNext()
+                # print(job.findAll("li"))
+                for i in job.findAll("li"):
+                     JobRequirement.append(i.text.strip())
+                # while job.name != "div":
+                #     if job.findChild() is not None:
+                #         JobRequirement += str(job).strip()
+                #     job = job.findNext()
         anotherInformation = soupDescription.find("div", class_="card").findAll("dt", class_="fwb")
         # Những thông tin khác như Location,Year of experience,vì nó cùng 1 class ,nên phải dung mảng
         for information in anotherInformation:
+            Skills = []
             if information.text == "Location":  # Kiểm tra text của thẻ mình tim đến
                 Location = information.findNext().text.strip()
             if information.text == "Year of Experience":
@@ -102,12 +119,11 @@ def crawl_topDev():
             # if(information.text=="Level"):
             # Level=information.findNext().text.strip()
             if information.text == "Skills":
-                ArraySkills = information.find_all_next("a",
-                                                        class_="ilabel")  # Find all next là tìm tất cả tiếp theo của
+                ArraySkills = information.findNext("div",class_="tag-list").findChildren("a")  # Find all next là tìm tất cả tiếp theo của
                 # thẻ
+            
                 for skill in ArraySkills:
                     Skills.append(skill.findChild().text.strip())  # FindChild là tìm con của thẻ
-        JobDescription += "<p>" + "YearOfExperience:" + YearOfExperience + "</p>" + "<p>" + "JobType:" + JobType + "</p>"
         myDick = {
             "NameJob": NameJob,
             "NameCompany": nameCompany,
@@ -115,10 +131,13 @@ def crawl_topDev():
             "JobDescription": JobDescription,
             "JobRequirements": JobRequirement,
             "Location": Location,
-            "Skills": Skills
+            "Skills": Skills,
+            "YearOfExperiece":YearOfExperience,
+            "JobType":JobType
         }
         if crawl_Check(NameJob, nameCompany) == 1:
             myCol.insert_one(myDick)
+        Skills.clear()
 crawl_topDev()
 crawl_ITWork()
 print("test")

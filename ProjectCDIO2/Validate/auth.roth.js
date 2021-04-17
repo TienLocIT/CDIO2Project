@@ -1,8 +1,8 @@
+
 const db = require("../mongoDB")
-module.exports.postLogin=async function (req,res,next)
-{
+module.exports.postLogin=async function (req,res,next){
     var userRequire="",passwordrequire="";
-    var user=await db.collection("User").findOne({username:req.body.name})
+    var user=await db.collection("User").findOne({userName:req.body.name})
     if(!req.body.name){
         userRequire="Username is Require"
     }

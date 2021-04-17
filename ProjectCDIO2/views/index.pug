@@ -1,18 +1,19 @@
 doctype html
 head
   meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  // <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
   title Document
-  link(rel='stylesheet' href='../bootstrap/css/bootstrap.css')
-  link(rel='stylesheet' href='../fa/css/all.css')
-  link(rel='stylesheet' href="../css/1.css")
-  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  link(rel='stylesheet', href='../bootstrap/css/bootstrap.css')
+  link(rel='stylesheet', href='../fa/css/all.css')
+  link(rel='stylesheet', href='../css/1.css')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
 // Menu
 nav.navbar.navbar-expand-sm.menu
   a.navbar-brand(href='#')
-    img(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.15752-9/119229442_1643995679098218_5153316774160353759_n.png?_nc_cat=109&ccb=1-3&_nc_sid=ae9488&_nc_ohc=2j1xxFKyX4AAX8vdn7n&_nc_ht=scontent-hkg4-2.xx&oh=7b1e5595e444bb5310407af2ce302b5c&oe=609D4100' alt='' srcset='' style='height: 50px;width: 100px;')
-  button.navbar-toggler.d-lg-none(type='button' data-toggle='collapse' data-target='#collapsibleNavId' aria-controls='collapsibleNavId' aria-expanded='false' aria-label='Toggle navigation')
+    img(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.15752-9/119229442_1643995679098218_5153316774160353759_n.png?_nc_cat=109&ccb=1-3&_nc_sid=ae9488&_nc_ohc=2j1xxFKyX4AAX8vdn7n&_nc_ht=scontent-hkg4-2.xx&oh=7b1e5595e444bb5310407af2ce302b5c&oe=609D4100', alt='', srcset='', style='height: 50px;width: 100px;')
+  button.navbar-toggler.d-lg-none(type='button', data-toggle='collapse', data-target='#collapsibleNavId', aria-controls='collapsibleNavId', aria-expanded='false', aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #collapsibleNavId.collapse.navbar-collapse
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0
@@ -38,24 +39,27 @@ nav.navbar.navbar-expand-sm.menu
           span.sr-only (current)
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0.sign-in
       li.nav-item.active(style='border-right: 1.5px solid black;')
-        a.nav-link.mt-1(href='#')
+        a.nav-link.mt-1(href='/work')
           | RECRUITER 
           span.sr-only (current)
       li.nav-item.active.mt-2.ml-3
-        i.fas.fa-bell
-      li.nav-item.active.mt-2.ml-3
-        i.fas.fa-flag-checkered
-      if (!user)
+        i.fas.fa-bell(style='font-size: x-large;')
+      //
+        <li class="nav-item active mt-2 ml-3">
+        <i class="fas fa-flag-checkered"></i>
+        </li>
+      if !user
         li.nav-item.active.mt-1.ml-5
           .dropdown.show
-            a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
               | SIGN-IN
             .dropdown-menu(aria-labelledby='dropdownMenuLink')
               table.table.dropdown-item
                 thead
                   tr
                     .container-fluid
-                      th(scope='col') FINDING JOB
+                      th(scope='col') FINDING JOB 
+                         
                 tbody
                   tr
                     th(scope='row')
@@ -68,78 +72,87 @@ nav.navbar.navbar-expand-sm.menu
                         i.fas.fa-sign-in-alt  LOGIN
                   tr
                     th(scope='row')
-                      a(href='auth/signup')
-                        i.far.fa-registered  CREATE NEW ACCOUNT
+                      a(href='/users/create')
+                        i.far.fa-registered  CREATE NEW ACCOUNT 
       else 
-        a.btn.btn-primary(href="http://") Logout
-        a.btn.btn-primary(href="http://") Findingjob
-                                   
+          li.nav-item.active.mt-1.ml-5
+            a.btn.btn-primary(href="/work") FindingJob 
+          li.nav-item.active.mt-1.ml-5
+           a.btn.btn-primary(href="/auth/logout") Logout 
 // slide
-.container-fluid(style='position: relative; padding-left: 0%!important;')
+.container-fluid(style='position: relative; padding: 0%!important;margin: 0;')
   #carouselId.carousel.slide(data-ride='carousel')
     ol.carousel-indicators
-      li.active(data-target='#carouselId' data-slide-to='0')
-      li(data-target='#carouselId' data-slide-to='1')
-      li(data-target='#carouselId' data-slide-to='2')
+      li.active(data-target='#carouselId', data-slide-to='0')
+      li(data-target='#carouselId', data-slide-to='1')
+      li(data-target='#carouselId', data-slide-to='2')
     .carousel-inner(role='listbox')
       .carousel-item.active.img-fluid
-        img(src='images/slide-1.jpg' alt='First slide')
+        img(src='images/slide-1.jpg', alt='First slide')
       .carousel-item.img-fluid
-        img(src='images/slide-3.jpg' alt='Second slide')
+        img(src='images/slide-3.jpg', alt='Second slide')
       .carousel-item.img-fluid
-        img(src='images/slide-2.png' alt='Third slide')
-    a.carousel-control-prev(href='#carouselId' role='button' data-slide='prev')
+        img(src='images/slide-2.png', alt='Third slide')
+    a.carousel-control-prev(href='#carouselId', role='button', data-slide='prev')
       span.carousel-control-prev-icon(aria-hidden='true')
       span.sr-only Previous
-    a.carousel-control-next(href='#carouselId' role='button' data-slide='next')
+    a.carousel-control-next(href='#carouselId', role='button', data-slide='next')
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
   .container.searching
     h2 Finding your dream jobs
-    .btn-group.find
-      input.search(type='search' name='' placeholder='SEARCH' id='')
-      button.btn-group.search-button(type='button') Searching
+    form.btn-group.find(action="/work/search" method="GET")
+      input.search(type="text", name='work', placeholder='SEARCH', id='')
+      button.btn-group.search-button Searching
 // top company
 .container.mt-5
   h2.mb-5(style='text-align: center;') TOP COMPANY
   .row.ml-5
-   each Job in Jobs1
+   each Job in Jobs
     .col-md-2.ml-2
-        img(src=Job.ImageCompanyUrl alt='' srcset='' class="imgCompanyTop")
-        div
-            a(href='http://www.vietnamworks.com/tim-viec-lam/nha-tuyen-dung/-1360620/?utm_source=vnw_homepage&utm_medium=featurelogo&utm_campaign=1360620' target='_blank')=Job.NameCompany
-    
+      img.top-company-img(src=Job.ImageCompanyUrl, alt='', srcset='')
+      .text-center.company-link
+        a(href='/work/'+Job._id, target='_blank')=Job.NameCompany
 // best job
 .container-fluid.mt-5
-  h2 Feature job:
   .row
-     each Job in Jobs
-      .col-6
-        table.table
-          tbody
-        
-            tr
-              th(scope='row')
-                img(src=Job.ImageCompanyUrl alt='')
-              td
-                  p(style="font-weight:bold;text-align:left")=Job.NameCompany 
-                  p=Job.NameJob 
+    .col-md-6
+      table.table
+        tbody
+         each Job in Jobs1
+          tr
+            th(scope='row')
+              img.job-img(src=Job.ImageCompanyUrl, alt='')
+            td
+              a.introductJob(href="/work/"+Job._id style="text-decoration:none;") 
+                 h5=Job.NameJob
+              p=Job.Location
+    .col-md-6
+      table.table
+        tbody
+         each Job in Jobs2
+          tr
+            th(scope='row')
+              img.job-img(src=Job.ImageCompanyUrl, alt='')
+            td
+              h5=Job.NameJob
+              p=Job.Location
 // title
 .container-fluid.mt-5
   .row
     .col-md-6
-      img(src='images/title.png' alt='' srcset='')
+      img(src='images/title.png', alt='', srcset='')
     .col-md-6
       div(style='position: absolute; top: 35%;')
         h4 N&acirc;ng t&#x1EA7;m s&#x1EF1; nghi&#x1EC7;p v&#x1EDB;i 1500+ vi&#x1EC7;c IT m&#x1EDB;i nh&#x1EA5;t
         button.btn.btn-warning.text-light  FOR MORE DETAIL
 // Menber
 h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
-.container
+.container.team
   .row
     .col-md-4
-      .card.border-0(style='height: 400px; width: 200px;')
-        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/150154044_2800021086931226_1498581719510773739_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=916X83tNoE0AX8xiOS-&_nc_ht=scontent-hkg4-1.xx&oh=eaac722cffa593b4d244d0b5755b6802&oe=6090E8A4' alt='' style='margin-left: 25px;')
+      .card.border-0.team-member-img
+        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/150154044_2800021086931226_1498581719510773739_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=916X83tNoE0AX8xiOS-&_nc_ht=scontent-hkg4-1.xx&oh=eaac722cffa593b4d244d0b5755b6802&oe=6090E8A4', alt='', style='margin-left: 25px;')
         .card-body
           h4.card-title(style='width: 700px;') THAI HUU CHINH
           p.card-text(style='width: 700px;') DESIGNER - DEVELOPER
@@ -151,8 +164,8 @@ h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
             .col-xl-4
               i.fab.fa-google(style='font-size: x-large;')
     .col-md-4
-      .card.border-0(style='height: 400px; width: 200px;')
-        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent.xx.fbcdn.net/v/t1.15752-0/s206x206/166313379_266674118282184_2564785488427329902_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=f7SngxxcngMAX9Wp2kW&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&tp=7&oh=3680e8c19e9a5c7126ea39373342d05c&oe=60923540' alt='' style='margin-left: 25px;')
+      .card.border-0.team-member-img
+        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent.xx.fbcdn.net/v/t1.15752-0/s206x206/166313379_266674118282184_2564785488427329902_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=f7SngxxcngMAX9Wp2kW&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&tp=7&oh=3680e8c19e9a5c7126ea39373342d05c&oe=60923540', alt='', style='margin-left: 25px;')
         .card-body
           h4.card-title(style='width: 700px;') HOANG BAO CHUNG
           p.card-text(style='width: 700px;') DESIGNER - DEVELOPER
@@ -164,8 +177,8 @@ h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
             .col-md-4
               i.fab.fa-google(style='font-size: x-large;')
     .col-md-4
-      .card.border-0(style='height: 400px; width: 200px;')
-        img.card-img-top.rounded-circle.team-member(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/123615618_2734355616893471_6822907644787086722_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=19026a&_nc_ohc=wG9TfkoAIZwAX-ASZMl&_nc_ht=scontent-hkg4-2.xx&oh=221f5ff3c65342ef36ea5c8b4a948c1e&oe=6091D03B' alt='' style='margin-left: 25px;width: 200px;')
+      .card.border-0.team-member-img
+        img.card-img-top.rounded-circle.team-member(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/123615618_2734355616893471_6822907644787086722_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=19026a&_nc_ohc=wG9TfkoAIZwAX-ASZMl&_nc_ht=scontent-hkg4-2.xx&oh=221f5ff3c65342ef36ea5c8b4a948c1e&oe=6091D03B', alt='', style='margin-left: 25px;width: 200px;')
         .card-body
           h4.card-title(style='width: 700px;') NGUYEN TIEN LOC
           p.card-text(style='width: 700px;') DESIGNER - DEVELOPER
@@ -178,8 +191,8 @@ h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
               i.fab.fa-google(style='font-size: x-large;')
   .row(style='padding-left: 100px;')
     .col-md-6
-      .card.border-0(style='height: 400px; width: 200px;')
-        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent.fdad1-1.fna.fbcdn.net/v/t1.6435-9/c0.131.1365.1365a/s851x315/34984798_838079019720001_231988402180849664_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=da31f3&_nc_ohc=r_H-CTwvhLgAX82-B5P&_nc_ht=scontent.fdad1-1.fna&tp=28&oh=ae55040cd87f1b81d3fa87447a30fbc7&oe=6091020C' alt='' style='margin-left: 25px;')
+      .card.border-0.team-member-img
+        img.card-img-top.rounded-circle.img-fluid.team-member(src='https://scontent.fdad1-1.fna.fbcdn.net/v/t1.6435-9/c0.131.1365.1365a/s851x315/34984798_838079019720001_231988402180849664_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=da31f3&_nc_ohc=r_H-CTwvhLgAX82-B5P&_nc_ht=scontent.fdad1-1.fna&tp=28&oh=ae55040cd87f1b81d3fa87447a30fbc7&oe=6091020C', alt='', style='margin-left: 25px;')
         .card-body
           h4.card-title(style='width: 700px;') BUI PHUC HAU
           p.card-text(style='width: 700px;') DESIGNER - DEVELOPER
@@ -191,12 +204,12 @@ h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
             .col-xl-4
               i.fab.fa-google(style='font-size: x-large;')
     .col-md-6
-      .card.border-0(style='height: 400px; width: 200px;')
-        img.card-img-top.rounded-circle.team-member(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/s960x960/167850701_2922881501257217_245422825023346075_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=825194&_nc_ohc=MnyjnDl1P5cAX96vngs&_nc_ht=scontent-hkg4-2.xx&tp=7&oh=8757ba034ea2da21d91829914639ddf4&oe=60903A8B' alt='' style='margin-left: 25px;width: 200px; height: 200px;')
+      .card.border-0.team-member-img
+        img.card-img-top.rounded-circle.team-member(src='https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/s960x960/167850701_2922881501257217_245422825023346075_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=825194&_nc_ohc=MnyjnDl1P5cAX96vngs&_nc_ht=scontent-hkg4-2.xx&tp=7&oh=8757ba034ea2da21d91829914639ddf4&oe=60903A8B', alt='', style='margin-left: 25px;')
         .card-body
           h4.card-title(style='width: 700px;') PHAN VAN PHAT
           p.card-text(style='width: 700px;') DESIGNER - DEVELOPER
-          .row
+          .row.text-center
             .col-md-4
               i.fab.fa-github(style='font-size: x-large;')
             .col-md-4
@@ -206,9 +219,7 @@ h2.text-center.text-muted.py-3.mt-5 TEAM MEMBER
 // container
 // footer
 footer.py-5.bg-dark.mt-5.container-fluid
-  .container
-    p.m-0.text-center.text-white Copyright &copy; JAYDENCHINH 2020
-script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
-script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
-script(src='1.js')
+  p.m-0.text-center.text-white Copyright &copy; JAYDENCHINH 2020
+script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')

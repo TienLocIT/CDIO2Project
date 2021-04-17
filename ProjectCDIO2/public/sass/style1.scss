@@ -1,0 +1,145 @@
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}
+@mixin cover-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+@mixin color-fonts {
+    color: #0a3d62;
+}
+body{
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+
+}
+main{
+    margin-top: 20px;
+    margin-bottom: 5rem;
+    .btn-back{
+        padding-bottom: 5rem;
+    }
+}
+
+.form-left{
+    background-color: #dcdde1;
+    @include color-fonts();
+    @include flex-center-column();
+    .company__logo{
+        padding: 30px;
+        margin-bottom: 10px;
+        border-radius: 50%;
+        border: 1px solid #0a3d62;
+        img{
+            @include box(100px, 100%)
+        }
+    }
+    .company__name{
+        h3{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+    .company__tittle{
+        h4{
+            font-size: 16px;
+            font-weight: 400;
+        }
+        padding-bottom: 3rem;
+    }
+    .company__contact{
+        i{
+            padding-right: 0.5rem;
+        }
+        hr{
+            color: rgb(124, 123, 123);
+        }
+    }
+}
+.form-right{
+    background-color: #f5f6fa;
+    @include color-fonts();
+    h4{
+        font-weight: bold;
+    }
+    padding-bottom: 2rem;
+    .infomation__tittle{
+        &__texts{
+            font-size: 1rem;
+        }
+        margin-bottom: 2rem;
+    }
+    .description__infomation{
+        &__tittle{
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #d34127;
+        }
+        &__tag{
+            font-weight: bold;
+        }
+    }
+    .infomation__jobs{
+        margin-top: 3rem;
+    }
+    .jobs__items{
+        margin-top: 2rem;
+        &__tittle{
+            font-size: 1rem;
+            color: #d34127;
+        }
+        .jobs__items__location{
+            .location__status{
+                float: right;
+                font-size: 14px;
+                background-color: #98fdbd;
+                padding-left: 10px;
+                padding-right: 10px;
+                font-weight: 500;
+                border-radius: 2rem;
+            }
+        }
+        .jobs__sumary{
+            margin-top: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .jobs__tag{
+            a{
+                text-decoration: none;
+                @include color-fonts();
+            }
+            &__items{
+                padding: 0.2rem;
+                border: 1px solid;
+            }
+            .btn__apply{
+                float: right;
+            }
+        }
+        .inline__form{
+            margin-top: 1.3rem;
+        }
+    }
+}

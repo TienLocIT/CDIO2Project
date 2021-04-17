@@ -1,0 +1,79 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description', content='')
+  meta(name='author', content='')
+  title Shop Homepage - Start Bootstrap Template
+  // Bootstrap core CSS
+  link(href='../vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+  // Custom styles for this template
+  link(href='../css/shop-homepage.css', rel='stylesheet')
+// Navigation
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+  .container
+    a.navbar-brand(href='#') Start Bootstrap
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarResponsive.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item.active
+          a.nav-link(href='#')
+            | Home
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='#') About
+        li.nav-item
+          a.nav-link(href='#') Services
+        li.nav-item
+          a.nav-link(href='#') Contact
+// Page Content
+.container
+  .row
+    .col-lg-3
+      img.mt-5(src='https://images.vietnamworks.com/logo/5-500x600_114801.png', style='width: 250px;', alt='', srcset='')
+      img.mt-5(src='https://images.vietnamworks.com/logo/5-500x600_114801.png', style='width: 250px;', alt='', srcset='')
+      img.mt-5(src='https://images.vietnamworks.com/logo/5-500x600_114801.png', style='width: 250px;', alt='', srcset='')
+    // /.col-lg-3
+    .col-lg-9
+      #carouselExampleIndicators.carousel.slide.my-4(data-ride='carousel')
+        ol.carousel-indicators
+          li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+          li(data-target='#carouselExampleIndicators', data-slide-to='1')
+          li(data-target='#carouselExampleIndicators', data-slide-to='2')
+        .carousel-inner(role='listbox')
+          .carousel-item.active
+            img.d-block.img-fluid(src='../images/q2-eng.png', alt='First slide')
+          .carousel-item
+            img.d-block.img-fluid(src='../images/q2-eng.png', alt='Second slide')
+          .carousel-item
+            img.d-block.img-fluid(src='../images/q2-eng.png', alt='Third slide')
+        a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.sr-only Previous
+        a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.sr-only Next
+      .row(style="width:110%")
+        table.table.table-striped.table-hover
+          tbody
+           each Job in Jobs
+                tr
+                  .card(style='width: 170rem;height:200px')
+                    .card-body
+                        img(src=Job.ImageCompanyUrl, style='float:left;margin-right:30px;height:161px;width:150px')
+                        h5.card-title
+                            a.nameJob(href="/work/"+Job._id, style='text-decoration:none')=Job.NameJob
+                        p.card-text(style='font-weight: bold;')=Job.NameCompany
+                        i.fas.fa-map-marker
+                        span=Job.Location
+                        div(style="margin-top:20px")
+                            each skill in Job.Skills
+                                span(style='border: 1px solid #D8D8D8;padding: 3px;padding-left: 5px;padding-right: 5px;margin-right:5px')=skill
+    // /.col-lg-9
+  // /.row
+// /.container
+// Bootstrap core JavaScript
+script(src='vendor/jquery/jquery.min.js')
+script(src='vendor/bootstrap/js/bootstrap.bundle.min.js')
+script(src='https://kit.fontawesome.com/cf49505c42.js', crossorigin='anonymous')

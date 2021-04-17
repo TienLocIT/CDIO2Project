@@ -1,0 +1,45 @@
+extends ../layout/common 
+
+block content
+    .login-form.row.align-items-center
+        .col.form-signin
+            section.tittle__items
+                h3 Sign Up
+                a(href="/") Home
+            section.manipulation-signup__items
+                if errors
+                    each err in errors
+                        .alert.alert-danger= err
+                form.input__items(action='/users/create' method='POST' enctype="multipart/form-data")
+                 -var a=values?values.userName:""
+                    if (a=="")
+                        h2=usernamerequire 
+                    else 
+                        h2=usererror
+                    .input__items__user
+                        input#name(type='text' name="userName" maxlength="20" placeholder='UserName' value=values?values.userName:"")
+                 -var a=values?values.userName:""
+                    if (a=="")
+                        h2=emailrequire 
+                    else 
+                        h2=emailerror
+                    .input__items__email
+                        input#email(type='email' name="email" placeholder='Email' value=values?values.email: "")
+                    .input__items__pass
+                        input#password(type='password' name="password" placeholder='Password' value=valued ? valued.pass: "")
+                    .input__items__re-pass
+                        input#password(type='password' placeholder='Reenterpassword')
+                    .form-group   
+                        input#avatar.form-control-file(type="file", name="avatar")
+                    .btn__signup
+                        button.btn Sign Up
+            .items__forgot
+                a.forgot__password(href='' s='') Forgot password?
+            hr
+            .link__signup
+                h4
+                | Already to member? 
+                a.switch__signup(href='index.html') Sign In
+        .col.mx-auto.image__left
+            lottie-player(src='https://assets6.lottiefiles.com/packages/lf20_e9of4o97.json' background='transparent' speed='1' style='width: 480px; height: 480x;' loop='' autoplay='')
+    script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')

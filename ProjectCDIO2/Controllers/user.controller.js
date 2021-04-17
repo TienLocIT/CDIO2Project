@@ -1,13 +1,8 @@
 const db = require("../mongoDB");
 module.exports={
-    index:await function(req,res){
-        res.render("users/index",{
-            Users:await db.collection("users").findOne({username:req.body.username})
-        })
-    },
-    findJob: await function(req,res,next){
+    findJob: async function(req,res,next){
         const hasSkill=false
-        const  id=req.signedCookies.UserID
+        const  id=req.signedCookies.UserId
         const  skills=await db.collection("user").findOne({id:id}).skills
         const JobFindUser=[]
         // for(int i=0;i<skills)
@@ -24,5 +19,18 @@ module.exports={
         res.render("user/Job",{
             Jobs:JobFindUser
         })
-    }
+    },
+    create:function (req, res) {
+        res.render("user/create");
+    },
+    postCreate: async function (req, res) {
+        if(!req.file)
+          req.body.avatar = "uploads\\26306066987a80ca8a795e384c726bc9";
+        else   
+          req.body.avatar = req.file.path.split('\\').slice(1).join('\\');
+        db.collection("User").insertOne(req.body)
+        .catch(error => console.error(error))
+        const user= await db.collection("User").findOne({userName:req.body.userName})
+        res.redirect("/information/"+user._id);
+      }
 }

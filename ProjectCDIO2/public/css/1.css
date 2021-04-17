@@ -1,10 +1,14 @@
 *{margin: 0;padding: 0;}
 body{
     height: auto;
-    width: 1600px;
+    width: 1400px;
     overflow-x: hidden;
+    /* margin-left: 125px!important; */
 }
 .menu{
+    margin: 0;
+    padding: 0;
+    width: 100%; 
     position: relative;
     background-image: linear-gradient(90deg, rgb(0, 185, 242) 48%, rgb(14, 124, 205) 95%, rgb(0, 185, 242) 100%); 
     color: white;
@@ -14,16 +18,12 @@ body{
 i .fas{
     cursor: pointer;
 }
-.imgCompanyTop{
-    width: 150px;
-    height: 150px;
-}
 .nav-link{
     color: white;
 }
 .sign-in{
     position: absolute;
-    right: 20%;
+    right: 5%;
 }
 .dropdown-toggle{
     background-image: linear-gradient(90deg, rgb(0, 185, 242) 48%, rgb(14, 124, 205) 95%, rgb(0, 185, 242) 100%); 
@@ -55,6 +55,13 @@ i .fas{
 .find{
     border: 20px solid rgba(0, 0, 0, 0.272);
 }
+.introductJob:hover{
+    color: red;
+  }
+  
+  .introductJob{
+    color: #000;
+  }
 .search-button{
     width: 100px; 
     height: 60px; 
@@ -66,14 +73,47 @@ i .fas{
     align-items: center;
     justify-content: center;
 }
+.top-company-img{
+    height: 150px;
+    width: 150px;
+    border: 2px dotted gray;
+}
+.company-link a:hover{
+    text-decoration: none;
+    color: #F7941D;
+}
 .apply{
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.team{
+    margin-left: 15%!important;
+}
 .team-member{
-    width: 14rem;
-    height: 14rem;
+    width: 200px!important; 
+    height: 200px!important;
     border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+.job-img{
+    height: 100px;
+    width: 100px;
+}
+.label-hot{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    z-index: 3;
+    background-color: rgba(255, 0, 0, 0.523);
+    color: white;
+    height: 30px;
+    width: 70px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 10%;
+}
+.team-member-img{
+    height: 400px; width: 200px;
 }
